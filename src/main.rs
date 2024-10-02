@@ -10,7 +10,7 @@ fn thread_worker<P: AsRef<Path>>(path: P) -> io::Result<()> {
 }
 
 fn main() {
-    let folder = "/home/loafey/BreadBox";
+    let folder = std::env::args().nth(1).unwrap();
 
     let t = std::thread::spawn(move || thread_worker(folder).unwrap());
     let now = Instant::now();
